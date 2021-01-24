@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Lesson 23</title>
+  </head>
+  <body>
+    <form id="inputDesk">
+      <input type="text" placeholder="Name" id="inputName" class="margin_t_b" />
+      <input type="text" placeholder="Year" id="inputYear" class="margin_t_b" />
+      <input type="date" placeholder="Date" id="inputDate" class="margin_t_b" />
+      <input type="text" placeholder="$" id="inputSalary" class="margin_t_b" />
+      <button id="btnAddWorker" class="margin_t_b">Add worker</button>
+    </form>
+
+    <div id="info">
+      <div id="workersNumber">
+        <p>Numbers of workers:</p>
+        <p id="workersNumber_value">0</p>
+      </div>
+      <div id="sumSalary">
+        <p>Sum $:</p>
+        <p id="sumSalary_value"></p>
+      </div>
+    </div>
+
+    <table class="tableWorkers margin_t_b">
+      <thead>
+        <tr class="tableWorkers_cell">
+          <th class="tableWorkers_cell"></th>
+          <th class="tableWorkers_cell">Name</th>
+          <th class="tableWorkers_cell">
+            Date of Birth
+            <button class="btnSortHigh">↑</button>
+            <button class="btnSortLow">↓</button>
+          </th>
+          <th class="tableWorkers_cell">
+            Employment date
+            <button class="btnSortHigh">↑</button>
+            <button class="btnSortLow">↓</button>
+          </th>
+          <th class="tableWorkers_cell">$</th>
+        </tr>
+      </thead>
+      <tbody id="tableWorkers_content"></tbody>
+    </table>
+
+    <button id="btnDelete">Delete</button>
+    <button id="btnSum">Sum</button>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

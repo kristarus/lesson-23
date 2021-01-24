@@ -1,0 +1,27 @@
+.tableWorkers {
+  border-collapse: collapse;
+}
+
+.tableWorkers_cell {
+  border: 1px solid black;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.margin_t_b {
+  margin: 20px 0;
+}
+
+#info {
+  display: block;
+}
+
+#sumSalary {
+  display: flex;
+  flex-direction: row;
+}
+
+#workersNumber {
+  display: flex;
+  flex-direction: row;
+}

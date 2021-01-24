@@ -4,7 +4,7 @@ const tableWorkers = document.querySelector(".tableWorkers");
 const btnSum = document.querySelector("#btnSum");
 const btnDelete = document.querySelector("#btnDelete");
 
-//=====================EVENTS==========================
+//=====================EVENTS===========================
 
 inputDesk.addEventListener("click", (event) => {
   if (event.target.closest("#btnAddWorker")) {

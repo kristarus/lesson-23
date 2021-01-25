@@ -1,28 +1,26 @@
 let array = [];
-const inputDeck = document.querySelector("#inputDeck");
+const btnAddWorker = document.querySelector("#btnAddWorker");
 const tableWorkers = document.querySelector(".tableWorkers");
 const btnSum = document.querySelector("#btnSum");
 const btnDelete = document.querySelector("#btnDelete");
 
-//=====================EVENTS==========================
+//=====================EVENTS===========================
 
-inputDesk.addEventListener("click", (event) => {
-  if (event.target.closest("#btnAddWorker")) {
-    event.preventDefault();
-    addWorker();
-    const workersNum = workersNumber();
-    const workersNumber_value = document.querySelector("#workersNumber_value");
-    workersNumber_value.innerHTML = `${workersNum}`;
-  }
+btnAddWorker.addEventListener("click", (event) => {
+  event.preventDefault();
+  addWorker();
+  const workersNum = workersNumber();
+  const workersNumber_value = document.querySelector("#workersNumber_value");
+  workersNumber_value.innerHTML = `${workersNum}`;
 });
 
 tableWorkers.addEventListener("click", (event) => {
   if (event.target.closest(".checkWorker")) {
     updateCheckbox(event);
   } else if (event.target.closest(".btnSortHigh")) {
-    sortHigh(event);
+    sorting(event, true);
   } else if (event.target.closest(".btnSortLow")) {
-    sortLow(event);
+    sorting(event, false);
   }
   const workersNum = workersNumber();
   const workersNumber_value = document.querySelector("#workersNumber_value");
@@ -36,12 +34,11 @@ btnSum.addEventListener("click", (event) => {
 });
 
 btnDelete.addEventListener("click", (event) => {
-  for (let i = 0; i <= array.length - 1; i++) {
-    if (array[i].check === true) {
-      array.splice(i, 1);
-      i = -1;
-    }
-  }
+  const result = array.filter(function checkObj(item) {
+    if (item.check === false) return item;
+  });
+  array = result;
+
   drawTable(array);
   const workersNum = workersNumber();
   const workersNumber_value = document.querySelector("#workersNumber_value");
@@ -105,19 +102,15 @@ function updateCheckbox(event) {
 }
 
 function salarySum() {
-  let sum = 0;
-  array.forEach((item) => {
-    sum += +item.salary;
-  });
-  return sum;
+  let result = array.reduce(function (sum, current) {
+    return sum + +current.salary;
+  }, 0);
+
+  return result;
 }
 
 function workersNumber() {
-  let counter = 0;
-  array.forEach((item) => {
-    counter++;
-  });
-  return counter;
+  return array.length;
 }
 
 function sortHigh(event) {
@@ -144,4 +137,12 @@ function sortLow(event) {
     });
   }
   drawTable(array);
+}
+
+function sorting(event, flag) {
+  if (flag === true) {
+    sortHigh(event);
+  } else if (flag === false) {
+    sortLow(event);
+  }
 }
